@@ -39,11 +39,15 @@ module TB_convEncoder; // the testbench module name (no input or output ports)
 		// ==== Initialise the Signal Values first ====
 		reset = 1'b0;
 		b0 = 1'b0;
-		// now start to change the input bit (b0)
+		// let us reset the flip-flops:
+		#5 reset = 1'b1;
+		#10 reset = 1'b0; // hopefully all the flip-flops contain 0s
+		// now start to change the input bit (b0):
 		#15 b0 = 1'b1;
 		#20 b0 = 1'b0;
 		#15 b0 = 1'b1;
 		#25 b0 = 1'b0;
+		// let us reset the flip-flops again:
 		#10 reset = 1'b1;
 		#10 reset = 1'b0;
 		#15 b0 = 1'b1;
